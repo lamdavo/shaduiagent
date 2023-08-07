@@ -7,10 +7,14 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+const {username, isLogin} = useGlobalContext();
+
+
   return (
     <div>
       HOME LAYOUT
-      <h1></h1>
+      <h1> Hello: {username}</h1>
       {children}
     </div>
   );

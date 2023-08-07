@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
+import { useGlobalContext } from '@/app/context/store';
+import Icons from '@/components/Icons';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -32,6 +34,7 @@ const formSchema = z.object({
 
 function UserAuthForm() {
   const [isloading, setIsLoading] = useState(false);
+  const { username, isLogin, setUsername, setIsLogin } = useGlobalContext();
 
   const router = useRouter();
 
@@ -46,10 +49,12 @@ function UserAuthForm() {
 
   // define submit handler
   const onSubmit = (data: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
     // do something with the form values.
     // this will be type-safe and validated by zod
-    console.log(data);
-    router.push('/');
+    setUsername(data.username);
+    setIsLogin(true);
+    router.push('/home');
   };
 
   return (
@@ -84,7 +89,10 @@ function UserAuthForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button className='w-full' type='submit' disabled={isloading}>
+          {isloading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
+          Submit
+        </Button>
       </form>
     </Form>
   );

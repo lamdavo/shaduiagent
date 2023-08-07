@@ -1,17 +1,12 @@
-import UserAuthForm from '@/components/UserAuthForm';
+import UserNavigation from '@/components/UserNavigation';
 
 function HomePage() {
   return (
-    <div className='h-screen flex flex-col justify-center items-center'>
-      <div className='flex flex-col space-y-2 text-center mb-8'>
-        <h1 className='text-2xl font-semibold tracking-tight'>
-          Login your account
-        </h1>
-        <p className='text-sm text-muted-foreground'>
-          Enter your username below to login your account
-        </p>
+    <div className='flex-1 mt-10 mx-10'>
+      <div className='flex justify-end'>
+        <UserNavigation />
       </div>
-      <UserAuthForm />
+      HOME DASHBOARD
     </div>
   );
 }

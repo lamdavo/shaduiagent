@@ -15,11 +15,11 @@ interface ContextProps {
   setIsLogin: Dispatch<SetStateAction<boolean>>;
 }
 
-const GlobalContext = createContext<Partial<ContextProps>>({
+const GlobalContext = createContext<ContextProps>({
   username: '',
   isLogin: false,
-  setUsername: () => '',
   setIsLogin: () => false,
+  setUsername: () => '',
 });
 
 export const GlobalContextProvider = ({
@@ -28,7 +28,7 @@ export const GlobalContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [isLogin, setIsLogin] = useState(false);
-  const [username, setUsername] = useState('michael');
+  const [username, setUsername] = useState('');
 
   return (
     <GlobalContext.Provider
@@ -44,6 +44,4 @@ export const GlobalContextProvider = ({
   );
 };
 
-export const useGlobalContext = () => {
-  useContext(GlobalContext);
-};
+export const useGlobalContext = () => useContext(GlobalContext);
