@@ -1,4 +1,4 @@
-# Nextjs CRM demo
+# Shadui Dashboard
 
 ## Nextjs + shadcn/ui + tailwindcss + typescript
 
